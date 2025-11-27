@@ -1,4 +1,5 @@
 import PersonalAgregarVue from '@/modulos/personal/vistas/PersonalAgregarVue.vue'
+import PersonalEditarVue from '@/modulos/personal/vistas/PersonalEditarVue.vue'
 import PersonalVue from '@/modulos/personal/vistas/personalVue.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -19,6 +20,11 @@ const router = createRouter({
       path:'/personal/agregar',
       name:'personalagregar',
       component:PersonalAgregarVue
+    },
+    {
+      path:'/personal/:id/editar',
+      name:'personaleditar',
+      component:PersonalEditarVue
     }
     
   ],
