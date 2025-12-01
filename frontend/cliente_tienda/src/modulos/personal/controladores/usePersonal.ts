@@ -26,11 +26,28 @@ export const usePersonal = () =>{
 
         }
     }
+
+    const actualizarPersonal = async (personal:Personal) =>{
+        const respuesta = await personalApi.put('/',personal);
+        if(respuesta.data.affectedRows >= 1){
+            mensaje.value = 1;
+        } 
+    }
+
+    const borrarPersonal = async(personal:Personal) =>{
+        const respuesta=await personalApi.delete('/', {data:{id:personal.id}});
+        if (respuesta.data.fieldCount == 0) {
+            mensaje.value = 1;
+        }
+    }
+
     return {
         personal,
         traePersonal,
         agregarPersonal,
         mensaje,
-        traePersonaId
+        traePersonaId,
+        actualizarPersonal,
+        borrarPersonal
     }
 }
