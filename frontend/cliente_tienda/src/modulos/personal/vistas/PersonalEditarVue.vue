@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-5">
+    <div class="container mt-5" v-if="personal[0]">
             <div class="card">
             <div class="card-header">
                 <h4>Editar Personal</h4>
@@ -8,6 +8,10 @@
                 Datos actualizados con exito
             </div>
             <div class="card-body">
+                <div class="mb-3">
+                    Id
+                    <input type="text" class="form-control" v-model="personal[0].id" disabled>
+                </div>
                 <div class="mb-3">
                     Nombre
                     <input type="text" class="form-control" v-model="personal[0].nombre">
@@ -25,8 +29,8 @@
                     <input type="text" class="form-control" v-model="personal[0].estatus">
                 </div>
                 <div class="mb-3">
-                    <button class="btn btn-primary" >
-                        Agregar
+                    <button class="btn btn-primary" @click="actualizarPersonal(personal[0])" >
+                        Actualizar
                     </button>
                 </div>
             </div>
@@ -40,7 +44,7 @@ import type { PersonalAgregar } from '../interfaces/personal-interface';
 import { usePersonal } from '../controladores/usePersonal';
 import { useRoute } from 'vue-router';
 
-const {traePersonaId,personal,mensaje } = usePersonal();
+const { traePersonaId, personal, mensaje, actualizarPersonal } = usePersonal();
 let idPersona:number=0;
 const route = useRoute();
 
